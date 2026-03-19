@@ -19,6 +19,8 @@ const Chapter09 = React.lazy(() => import('./chapters/Chapter09_DP'));
 const Chapter10 = React.lazy(() => import('./chapters/Chapter10_Backtracking'));
 const Chapter11 = React.lazy(() => import('./chapters/Chapter11_Tries'));
 const Chapter12 = React.lazy(() => import('./chapters/Chapter12_InterviewPrep'));
+const Chapter13 = React.lazy(() => import('./chapters/Chapter13_Top150'));
+const QuestionDetailPage = React.lazy(() => import('./pages/QuestionDetailPage'));
 
 const chapterComponents: Record<string, React.LazyExoticComponent<React.FC<{ onComplete: () => void; isCompleted: boolean; interviewMode: boolean; }>>> = {
   arrays: Chapter01,
@@ -33,6 +35,7 @@ const chapterComponents: Record<string, React.LazyExoticComponent<React.FC<{ onC
   backtracking: Chapter10,
   tries: Chapter11,
   'company-strategy': Chapter12,
+  'top-150': Chapter13,
 };
 
 function LoadingFallback() {
@@ -266,6 +269,11 @@ export default function App() {
               <Routes location={location}>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/chapter/:slug" element={<ChapterPage interviewMode={interviewMode} />} />
+                <Route path="/question/:questionId" element={
+                  <React.Suspense fallback={<LoadingFallback />}>
+                    <QuestionDetailPage />
+                  </React.Suspense>
+                } />
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </motion.div>
