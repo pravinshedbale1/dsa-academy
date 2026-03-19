@@ -156,4 +156,16 @@ export const chapters: Chapter[] = [
     timeComplexity: 'All patterns',
     spaceComplexity: 'Varies',
   },
+  {
+    id: 13,
+    title: 'Top 150 Must-Solve Patterns',
+    slug: 'top-150',
+    difficulty: 'All',
+    xp: 150,
+    description: 'The ultimate list of 150 LeetCode & interview questions with comprehensive Java solutions and complexity analysis.',
+    icon: '🔥',
+    topics: ['All Patterns', 'Problem Solving', 'Data Structures', 'Algorithms'],
+    timeComplexity: 'O(1) to O(n!)',
+    spaceComplexity: 'O(1) to O(n)',
+  },
 ];
