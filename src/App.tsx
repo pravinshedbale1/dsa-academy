@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation, Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Sidebar } from './components/Layout/Sidebar';
 import { Navbar } from './components/Layout/Navbar';
@@ -119,6 +119,8 @@ function ChapterPage({ interviewMode }: { interviewMode: boolean }) {
 }
 
 // Home / Welcome page
+const MotionLink = motion.create(Link);
+
 function HomePage() {
   const { totalXP, maxXP, progress } = useProgress();
   return (
@@ -190,9 +192,9 @@ function HomePage() {
         transition={{ delay: 0.4 }}
       >
         {chapters.map((ch, i) => (
-          <motion.a
+          <MotionLink
             key={ch.id}
-            href={`/chapter/${ch.slug}`}
+            to={`/chapter/${ch.slug}`}
             className="glass-card p-5 hover:border-primary-500/30 transition-all group cursor-pointer"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -214,7 +216,7 @@ function HomePage() {
                 </div>
               </div>
             </div>
-          </motion.a>
+          </MotionLink>
         ))}
       </motion.div>
     </div>
